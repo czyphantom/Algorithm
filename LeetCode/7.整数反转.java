@@ -2,6 +2,8 @@
  * @lc app=leetcode.cn id=7 lang=java
  *
  * [7] 整数反转
+ * 难度：Easy
+ * 思路：水题
  */
 
 // @lc code=start
