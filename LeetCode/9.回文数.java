@@ -2,6 +2,7 @@
  * @lc app=leetcode.cn id=9 lang=java
  *
  * [9] 回文数
+ * 给你一个整数 x ，如果 x 是一个回文整数，返回 true ；否则，返回 false 。
  * 难度：Easy
  * 思路：反转即可
  */

@@ -1,9 +1,12 @@
-/**
- * 题目：给定一个罗马数字，将其转换成整数。输入确保在1到3999的范围内。
+/*
+ * @lc app=leetcode.cn id=13 lang=java
+ *
+ * [13] 罗马数字转整数
  * 难度：Easy
  * 思路：水题
  */
 
+// @lc code=start
  class Solution {
     public int romanToInt(String s) {
         int nums[]=new int[s.length()];
@@ -42,3 +45,5 @@
         return sum+nums[nums.length-1];
     }
  }
+// @lc code=end
+
