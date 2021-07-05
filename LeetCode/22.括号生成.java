@@ -1,9 +1,12 @@
-/**
- * 题目：给出n代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
+/*
+ * @lc app=leetcode.cn id=22 lang=java
+ *
+ * [22] 括号生成
+ * 题目：数字n代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且有效的括号组合。
  * 难度：Medium
- * 思路：递归
  */
 
+// @lc code=start
 class Solution {
     public List<String> generateParenthesis(int n) {
         List<String> result = new ArrayList<>();
@@ -28,3 +31,5 @@ class Solution {
         }
     }
 }
+// @lc code=end
+
