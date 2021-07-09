@@ -1,9 +1,13 @@
-/**
- * 题目：编写一个程序，通过已填充的空格来解决数独问题。
+/*
+ * @lc app=leetcode.cn id=37 lang=java
+ *
+ * [37] 解数独
+ * 题目：编写一个程序，通过填充空格来解决数独问题。
  * 难度：Hard
- * 思路：回溯
+ * 思路：穷举
  */
 
+// @lc code=start
 class Solution {
     public void solveSudoku(char[][] board) {
         if (board == null || board.length == 0) {
@@ -49,3 +53,5 @@ class Solution {
         return true;
     }
 }
+// @lc code=end
+
