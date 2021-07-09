@@ -1,9 +1,14 @@
-/**
-* 题目：一个升序序列，里面有相同的数，找出目标数的开始位置和结束位置。
-* 难度：Medium
-* 思路：二分找开始位置和结束位置
-*/
+/*
+ * @lc app=leetcode.cn id=34 lang=java
+ *
+ * [34] 在排序数组中查找元素的第一个和最后一个位置
+ * 题目：给定一个按照升序排列的整数数组nums，和一个目标值target。找出给定目标值在数组中的开始位置和结束位置。
+ * 如果数组中不存在目标值 target，返回 [-1, -1]。
+ * 难度：Medium
+ * 思路：二分
+ */
 
+// @lc code=start
 class Solution {
     public int[] searchRange(int[] nums, int target) {
         int[] res = new int[2];
@@ -51,4 +56,8 @@ class Solution {
         }
         return res;
     }
+
+
 }
+// @lc code=end
+
