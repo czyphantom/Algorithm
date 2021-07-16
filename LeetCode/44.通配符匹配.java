@@ -1,9 +1,13 @@
-/**
- * 题目：给定一个字符串(s)和一个字符模式(p)，实现一个支持'?'和'*'的通配符匹配。
+/*
+ * @lc app=leetcode.cn id=44 lang=java
+ *
+ * [44] 通配符匹配
+ * 题目：给定一个字符串(s)和一个字符模式(p) ，实现一个支持'?'和'*'的通配符匹配。
  * 难度：Hard
  * 思路：动态规划
  */
 
+// @lc code=start
 class Solution {
     public boolean isMatch(String s, String p) {
         boolean[][] match = new boolean[s.length() + 1][p.length() + 1];
@@ -11,8 +15,7 @@ class Solution {
         for(int i = p.length() - 1;i >= 0;i--){
             if (p.charAt(i) != '*') {
                 break;
-            }    
-            else {
+            } else {
                 match[s.length()][i] = true;
             }
                 
@@ -21,11 +24,9 @@ class Solution {
             for(int j = p.length() - 1;j >= 0;j--){
                 if(s.charAt(i) == p.charAt(j) || p.charAt(j) == '?') {
                     match[i][j] = match[i+1][j+1];
-                }       
-                else if(p.charAt(j) == '*') {
+                } else if(p.charAt(j) == '*') {
                     match[i][j] = match[i+1][j] || match[i][j+1];
-                }        
-                else {
+                } else {
                     match[i][j] = false;
                 } 
             }
@@ -33,3 +34,5 @@ class Solution {
         return match[0][0];
     }
 }
+// @lc code=end
+
