@@ -1,9 +1,13 @@
-/**
- * 题目：输入一个数n，输出一个n*n的矩阵，顺时针方向数字依次为1,2..n^2。
+/*
+ * @lc app=leetcode.cn id=59 lang=java
+ *
+ * [59] 螺旋矩阵 II
+ * 题目：给你一个正整数n，生成一个包含1到n^2所有元素，且元素按顺时针顺序螺旋排列的nxn正方形矩阵matrix。
  * 难度：Medium
- * 思路：和54基本如出一辙，改一改即可。
+ * 思路：和54螺旋矩阵类似
  */
 
+// @lc code=start
 class Solution {
     public int[][] generateMatrix(int n) {
         int[][] res = new int[n][n];
@@ -34,3 +38,5 @@ class Solution {
         return res;
     }
 }
+// @lc code=end
+
