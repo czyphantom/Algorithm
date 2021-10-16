@@ -11,13 +11,36 @@
  * 此外，路径仅包含从根目录到目标文件或目录的路径上的目录（即，不含 '.' 或 '..'）。
  * 返回简化后得到的 规范路径 。
  * 难度：Medium
- * 思路：
+ * 思路：栈
  */
 
 // @lc code=start
 class Solution {
     public String simplifyPath(String path) {
-        
+        String[] pathArray = path.split("/");
+		int length = pathArray.length;
+		Stack<String> stack = new Stack<>();
+		String result = "";
+		for (int i = 0;i < length;i++) {
+			if (pathArray[i].equals("") || pathArray[i].equals(".")) {
+                continue;
+            }
+			else if (pathArray[i].equals("..")) {
+				if (!stack.isEmpty()) {
+				    stack.pop();
+				}
+			}
+			else {
+				stack.push(pathArray[i]);
+			}
+		}
+		if (stack.isEmpty()) {
+			return "/";
+		}
+		while (!stack.isEmpty()) {
+		    result = "/" + stack.pop() + result;
+		}
+		return result;   
     }
 }
 // @lc code=end
