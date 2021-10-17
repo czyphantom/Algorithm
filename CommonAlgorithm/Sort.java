@@ -12,7 +12,7 @@ public class Sort {
         int len = a.length;
         for (int i = 1;i < len;i++) {
             int j;
-            for (j = i-1, v = a[i];j>=0 && a[j]>v;j--) {
+            for (j = i-1, v = a[i];j >= 0 && a[j] > v;j--) {
                 a[j+1] = a[j];
             }
             a[j+1] = v;
@@ -33,8 +33,7 @@ public class Sort {
             }
             if (index == i) {
                 continue;
-            }
-            else {
+            } else {
                 int temp;
                 temp = arr[index];
                 arr[index] = arr[i];
@@ -80,13 +79,13 @@ public class Sort {
     private int partition(int[] a, int begin, int end) {
         int pivot = a[begin];
         while (begin < end) {
-            while (begin<end && a[end]>pivot) {
+            while (begin < end && a[end] > pivot) {
                 end--;
             }
             if (begin < end) {
                 a[begin++] = a[end];
             }
-            while (begin<end && a[begin]<pivot) {
+            while (begin < end && a[begin] < pivot) {
                 begin++;
             }
             if (begin < end) {
@@ -112,12 +111,10 @@ public class Sort {
 		int v = a[low];
 		while (i <= gt) {
 			if (a[i] < v) {
-                exch(a, lt++, i++);
-            }
-			else if (a[i] > v) {
-                exch(a,gt--,i++);
-            }
-			else {
+                swap(a, lt++, i++);
+            } else if (a[i] > v) {
+                swap(a,gt--,i++);
+            } else {
                 i++;
             }
 		}
@@ -125,7 +122,7 @@ public class Sort {
 		sort(a, gt+1, hi);
 	}
 
-	private static void exch(int[] a, int i, int j) {
+	private static void swap(int[] a, int i, int j) {
 		int ex = a[i];
 		a[i] = a[j];
         a[j] = ex;
