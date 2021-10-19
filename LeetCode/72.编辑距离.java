@@ -1,12 +1,17 @@
-/**
- * 题目：给定两个单词word1和word2，计算出将word1转换成word2所使用的最少操作数。你可以对一个单词进行如下三种操作：
+/*
+ * @lc app=leetcode.cn id=72 lang=java
+ *
+ * [72] 编辑距离
+ * 题目：给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。
+ * 你可以对一个单词进行如下三种操作：
  * 插入一个字符
  * 删除一个字符
  * 替换一个字符
  * 难度：Hard
- * 思路：动态规划，比较两个字符是否相等，如果相等，dp[i][j]=dp[i-1][j-1]，如果不相等，因为我们有三种操作，所以dp[i][j] = min(dp[i-1][j-1],min(dp[i-1][j],dp[i][j-1]))+1.
+ * 思路：动态规划，
  */
 
+// @lc code=start
 class Solution {
     public int minDistance(String word1, String word2) {
         int len1 = word1.length();
@@ -32,3 +37,5 @@ class Solution {
         return dp[len1][len2];
     }
 }
+// @lc code=end
+

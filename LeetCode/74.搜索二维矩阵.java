@@ -1,9 +1,15 @@
-/**
-* 题目：对一个二维数组进行查找，二维数组满足每行从左至右递增，每行第一个数大于上一行最后一个数。
-* 难度：Medium
-* 思路：当做一维数组来做即可。
-*/
+/*
+ * @lc app=leetcode.cn id=74 lang=java
+ *
+ * [74] 搜索二维矩阵
+ * 题目：编写一个高效的算法来判断 m x n 矩阵中，是否存在一个目标值。该矩阵具有如下特性：
+ * 每行中的整数从左到右按升序排列。
+ * 每行的第一个整数大于前一行的最后一个整数。
+ * 难度：Medium
+ * 思路：二分
+ */
 
+// @lc code=start
 class Solution {
     public boolean searchMatrix(int[][] matrix, int target) {
         if (matrix.length == 0 || matrix[0].length == 0) {
@@ -29,4 +35,5 @@ class Solution {
         return false;
     }
 }
+// @lc code=end
 

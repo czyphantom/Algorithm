@@ -1,10 +1,13 @@
-/**
- * 题目：一个二维数组，如果有一个值为0，那么把所在行和列都设为0.
+/*
+ * @lc app=leetcode.cn id=73 lang=java
+ *
+ * [73] 矩阵置零
+ * 题目：给定一个m x n的矩阵，如果一个元素为0 ，则将其所在行和列的所有元素都设为0 。请使用原地算法。
  * 难度：Medium
- * 思路：如果一个值为0，就把所在行第一个数和所在列第一个数设为0作为标记，第0行0列要特殊考虑，因为第1个
- * 是相同的，需要进行区分。
+ * 思路：如果某个位置为0，在该行该列第一个位置置0来代表需要将该行该列清零
  */
 
+// @lc code=start
 class Solution {
     public void setZeroes(int[][] matrix) {
         int row = matrix.length;
@@ -47,3 +50,5 @@ class Solution {
         }
     }
 }
+// @lc code=end
+
