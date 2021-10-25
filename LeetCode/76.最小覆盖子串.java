@@ -1,9 +1,13 @@
-/**
- * 题目：给你一个字符串S、一个字符串T，请在字符串S里面找出：包含T所有字母的最小子串。
+/*
+ * @lc app=leetcode.cn id=76 lang=java
+ *
+ * [76] 最小覆盖子串
+ * 题目：给你一个字符串s、一个字符串t。返回s中涵盖t所有字符的最小子串。如果s中不存在涵盖t所有字符的子串，则返回空字符串 "" 。
  * 难度：Hard
- * 思路：滑动窗口
+ * 思路
  */
 
+// @lc code=start
 class Solution {
     public String minWindow(String s, String t) {
         if (s.length() == 0 || t.length() == 0) {
@@ -60,4 +64,6 @@ class Solution {
         }
         return ans[0] == -1 ? "" : s.substring(ans[1], ans[2] + 1);
     }
-  }
+}
+// @lc code=end
+
