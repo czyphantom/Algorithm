@@ -312,4 +312,28 @@ public class Sort {
     private void intsertSort(List<Integer> list) {
         Collections.sort(list);
     }
+
+    /**
+     * 计数排序
+     * 假设数组中元素都在0-k之间，k=O(n)时，计数排序的复杂度为O(n)
+     */
+     public int[] countSort(int[] a, int k) {
+         int[] temp = new int[k+1];
+        for (int i = 0;i < a.length;i++) {
+            temp[a[i]] += 1;
+        }
+        //计算temp数组中有多少元素<=i
+        for (int i = 2;i <= k;i++) {
+            temp[i] = temp[i-2] + temp[i-1];
+        }
+        int[] result = new int[a.length];
+
+        //把a[i]放到正确的位置上
+        for (int i = a.length-1;i >= 0;i--) {
+            result[temp[a[i]]] = a[i];
+            temp[a[i]] = temp[a[i]]-1;
+        }
+
+        return result;
+     }
 }
