@@ -1,9 +1,13 @@
-/**
- * 题目：给定一个整数n，求以 1...n 为节点组成的二叉搜索树有多少种？
+/*
+ * @lc app=leetcode.cn id=96 lang=java
+ *
+ * [96] 不同的二叉搜索树
+ * 题目：给你一个整数n ，求恰由n个节点组成且节点值从1到n互不相同的二叉搜索树有多少种？返回满足题意的二叉搜索树的种数。
  * 难度：Medium
  * 思路：动态规划
  */
 
+// @lc code=start
 class Solution {
     public int numTrees(int n) {
         if (n == 0) {
@@ -23,3 +27,5 @@ class Solution {
         return dp[n];
     }
 }
+// @lc code=end
+

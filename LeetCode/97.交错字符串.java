@@ -1,9 +1,18 @@
-/**
- * 题目：给定三个字符串s1, s2, s3, 验证s3是否是由s1和s2交错组成的。
- * 难度：Hard
+/*
+ * @lc app=leetcode.cn id=97 lang=java
+ *
+ * [97] 交错字符串
+ * 题目：给定三个字符串s1、s2、s3，请你帮忙验证s3是否是由s1和s2交错组成的。
+ * 两个字符串s和t交错的定义与过程如下，其中每个字符串都会被分割成若干非空子字符串：
+ * s = s1 + s2 + ... + sn
+ * t = t1 + t2 + ... + tm
+ * |n - m| <= 1
+ * 交错 是 s1 + t1 + s2 + t2 + s3 + t3 + ... 或者 t1 + s1 + t2 + s2 + t3 + s3 + ...
+ * 难度：Medium
  * 思路：动态规划
  */
 
+// @lc code=start
 class Solution {
     public boolean isInterleave(String s1, String s2, String s3) {
         if (s1.length() + s2.length() != s3.length()) {
@@ -28,3 +37,5 @@ class Solution {
         return dp[len1][len2];
     }
 }
+// @lc code=end
+

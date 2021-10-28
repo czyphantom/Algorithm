@@ -1,9 +1,16 @@
-/**
- * 题目：一条包含字母A-Z的消息通过以下方式进行了编码，A对应1，以此类推，给定一个只包含数字的非空字符串，请计算解码方法的总数。
+/*
+ * @lc app=leetcode.cn id=91 lang=java
+ *
+ * [91] 解码方法
+ * 题目：一条包含字母 A-Z 的消息通过以下映射进行了 编码 ：
+ * A->1,B->2...Z->26
+ * 要 解码 已编码的消息，所有数字必须基于上述映射的方法，反向映射回字母（可能有多种方法）。
+ * 给你一个只含数字的 非空 字符串 s ，请计算并返回解码方法的 总数 。
  * 难度：Medium
- * 思路：动态规划，注意情况很多，要考虑全
+ * 思路：dp
  */
 
+// @lc code=start
 class Solution {
     public int numDecodings(String s) {
         if(s == null || s.length() == 0 || s.charAt(0) == '0') {
@@ -47,3 +54,5 @@ class Solution {
         return dp[s.length()-1];
     }
 }
+// @lc code=end
+
