@@ -287,6 +287,11 @@ public class Sort {
         }
     }
 
+    /**
+    * 桶排序，桶排序假设数据服从均匀分布，平均情况下时间代价是O(n)。
+    * 桶排序将区间划分为n个相同大小的子区间，称为桶。然后，将n个数据放到各个桶中。
+    * 然后对每个桶进行排序，最后遍历每个桶按照顺序把每个桶的元素列出来即可。
+    */
     public void bucketSort(int[] a) {
         List<Integer> bucket[] = new ArrayList[bucketSize];
         for(int i=0; i < a.length ; i++) {
@@ -297,14 +302,14 @@ public class Sort {
             bucket[temp].add(a[i]);
         }
         //对桶内各个元素进行排序
-        for(int j=0;j<bucketSize;j++) {
+        for(int j = 0;j < bucketSize;j++) {
             intsertSort(bucket[j]);
             printList(bucket[j]);
         }
     }
 
     private void printList(List<Integer> list) {
-        while(list.size()>0) {
+        while(list.size() > 0) {
             System.out.print(list.remove(0) +"\t");
         }
     }
