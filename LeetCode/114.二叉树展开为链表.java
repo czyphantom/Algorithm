@@ -1,9 +1,30 @@
-/**
- * 题目：给定一个二叉树，原地将它展开为链表。
+/*
+ * @lc app=leetcode.cn id=114 lang=java
+ *
+ * [114] 二叉树展开为链表
+ * 题目：给你二叉树的根结点 root ，请你将它展开为一个单链表：
+ * 展开后的单链表应该同样使用 TreeNode ，其中 right 子指针指向链表中下一个结点，而左子指针始终为 null 。
+ * 展开后的单链表应该与二叉树 先序遍历 顺序相同。
  * 难度：Medium
  * 思路：递归
  */
 
+// @lc code=start
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
 class Solution {
     public void flatten(TreeNode root) {
         if (root == null) {
@@ -23,10 +44,8 @@ class Solution {
         }
         root.right = tmp;
     }
-}
 
-class Solution2 {
-    public void flatten(TreeNode root) {
+        public void flatten(TreeNode root) {
         TreeNode cur = root;
         while (cur != null) {
             if (cur.left != null) {
@@ -42,3 +61,5 @@ class Solution2 {
         }
     }
 }
+// @lc code=end
+
