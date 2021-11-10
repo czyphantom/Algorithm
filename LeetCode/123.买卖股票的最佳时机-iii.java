@@ -1,9 +1,14 @@
-/**
- * 题目：给定一个数组，它的第i个元素是一支给定的股票在第i天的价格。设计一个算法来计算你所能获取的最大利润。你最多可以完成两笔交易。
+/*
+ * @lc app=leetcode.cn id=123 lang=java
+ *
+ * [123] 买卖股票的最佳时机 III
+ * 题目：给定一个数组，它的第i个元素是一支给定的股票在第i天的价格。
+ * 设计一个算法来计算你所能获取的最大利润。你最多可以完成两笔交易。
  * 难度：Hard
  * 思路：动态规划
  */
 
+// @lc code=start
 class Solution {
     public int maxProfit(int[] prices) {
         if (prices == null || prices.length == 0) {
@@ -24,3 +29,5 @@ class Solution {
         return global[len-1][2];
     }
 }
+// @lc code=end
+
