@@ -1,15 +1,21 @@
-/**
- * 题目：给定两个单词（beginWord和endWord）和一个字典，找到从beginWord到endWord的最短转换序列的长度。转换需遵循如下规则：
- * 每次转换只能改变一个字母。
- * 转换过程中的中间单词必须是字典中的单词。
- * 难度：Medium
- * 思路：BFS。
+/*
+ * @lc app=leetcode.cn id=127 lang=java
+ *
+ * [127] 单词接龙
+ * 题目：字典 wordList 中从单词 beginWord 和 endWord 的 转换序列 是一个按下述规格形成的序列 beginWord -> s1 -> s2 -> ... -> sk：
+ * 每一对相邻的单词只差一个字母。
+ * 对于 1 <= i <= k 时，每个 si 都在 wordList 中。注意， beginWord 不需要在 wordList 中。
+ * sk == endWord
+ * 给你两个单词 beginWord 和 endWord 和一个字典 wordList ，返回 从 beginWord 到 endWord 的 最短转换序列 中的 单词数目 。如果不存在这样的转换序列，返回 0 。
+ * 难度：Hard
+ * 思路：
  */
 
+// @lc code=start
 class Solution {
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
         Set<String> dict = new HashSet<String>(wordList); 
-        Map<String, ArrayList<String>> nodeNeighbors = new HashMap<String, ArrayList<String>>();
+        Map<String, List<String>> nodeNeighbors = new HashMap<String, List<String>>();
         Map<String, Integer> distance = new HashMap<String, Integer>();
         List<String> solution = new ArrayList<String>();
         dict.add(beginWord);         
@@ -17,7 +23,7 @@ class Solution {
         return distance.get(endWord) == null ? 0 : distance.get(endWord)+1;              
 	}
 
-    private void bfs(String start, String end, Set<String> dict, Map<String, ArrayList<String>> nodeNeighbors, Map<String, Integer> distance) {
+    private void bfs(String start, String end, Set<String> dict, Map<String, List<String>> nodeNeighbors, Map<String, Integer> distance) {
         for (String str : dict) {
             nodeNeighbors.put(str, new ArrayList<String>());
         }
@@ -70,3 +76,5 @@ class Solution {
         return res;
      }
 }
+// @lc code=end
+
