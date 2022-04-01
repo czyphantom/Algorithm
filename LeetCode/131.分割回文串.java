@@ -1,9 +1,13 @@
-/**
- * 题目：给定一个字符串s，将s分割成一些子串，使每个子串都是回文串。返回s所有可能的分割方案。
+/*
+ * @lc app=leetcode.cn id=131 lang=java
+ *
+ * [131] 分割回文串
+ * 题目：给你一个字符串s，请你将s分割成一些子串，使每个子串都是回文串 。返回s所有可能的分割方案。
  * 难度：Medium
  * 思路：回溯
  */
 
+// @lc code=start
 class Solution {
     public List<List<String>> partition(String s) {
         List<List<String>> result = new ArrayList<>();
@@ -37,3 +41,5 @@ class Solution {
         return true;
     }
 }
+// @lc code=end
+
