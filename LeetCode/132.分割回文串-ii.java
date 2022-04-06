@@ -1,9 +1,14 @@
-/**
- * 题目：给定一个字符串s，将s分割成一些子串，使每个子串都是回文串。返回符合要求的最少分割次数。
+/*
+ * @lc app=leetcode.cn id=132 lang=java
+ *
+ * [132] 分割回文串 II
+ * 题目：给你一个字符串 s，请你将 s 分割成一些子串，使每个子串都是回文。
+ * 返回符合要求的 最少分割次数 。
  * 难度：Hard
- * 思路：动态规划。
+ * 思路：动态规划
  */
 
+// @lc code=start
 class Solution {
     public int minCut(String s) {
         if (s == null || s.length() == 0) {
@@ -24,3 +29,5 @@ class Solution {
         return dp[len-1];
     }
 }
+// @lc code=end
+
