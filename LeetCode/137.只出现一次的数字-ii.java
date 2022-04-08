@@ -1,9 +1,13 @@
-/**
- * 题目：给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现了三次。找出那个只出现了一次的元素。
+/*
+ * @lc app=leetcode.cn id=137 lang=java
+ *
+ * [137] 只出现一次的数字 II
+ * 题目：给你一个整数数组nums，除某个元素仅出现一次外，其余每个元素都恰出现 三次。请你找出并返回那个只出现了一次的元素。
  * 难度：Medium
  * 思路：可以看做设计一个状态转换电路，出现三次抵消为0,需要使用两个bit位表示
  */
 
+// @lc code=start
 class Solution {
     public int singleNumber(int[] nums) {
         int one = 0, two = 0, three;
@@ -21,3 +25,5 @@ class Solution {
         return one;
     }
 }
+// @lc code=end
+
