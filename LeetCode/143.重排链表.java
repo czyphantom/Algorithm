@@ -1,9 +1,26 @@
-/**
- * 题目：给定一个单链表 L：L0→L1→…→Ln-1→Ln，将其重新排列后变为： L0→Ln→L1→Ln-1→L2→Ln-2→…你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+/*
+ * @lc app=leetcode.cn id=143 lang=java
+ *
+ * [143] 重排链表
+ * 题目：给定一个单链表 L 的头节点 head ，单链表 L 表示为：
+ * L0 → L1 → … → Ln - 1 → Ln
+ * 请将其重新排列后变为：
+ * L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
  * 难度：Medium
- * 思路：使用冗余节点
+ * 思路：用冗余节点
  */
 
+// @lc code=start
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
     public void reorderList(ListNode head) {
         if (head == null) {
@@ -38,3 +55,5 @@ class Solution {
         }
     }
 }
+// @lc code=end
+
