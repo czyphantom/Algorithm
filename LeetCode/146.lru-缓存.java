@@ -1,17 +1,22 @@
-/**
- * 题目：运用你所掌握的数据结构，设计和实现一个LRU(最近最少使用) 缓存机制。它应该支持以下操作：获取数据get和写入数据put。
+/*
+ * @lc app=leetcode.cn id=146 lang=java
+ *
+ * [146] LRU 缓存
+ * 题目：请你设计并实现一个满足LRU (最近最少使用) 缓存约束的数据结构。
  * 难度：Medium
- * 思路：HashMap+双向链表
+ * 思路：LinkedHashMap
  */
 
- //偷懒的解法，直接用LinkedHashMap
+// @lc code=start
 class LRUCache {
-    Map<Integer, Integer> map;
 
-    int capacity;
+    //直接用linkedhashmap
+    private LinkedHashMap<Integer, Integer> linkedHashMap = new LinkedHashMap<>();
+
+    private int capacity = 0;
 
     public LRUCache(int capacity) {
-        map = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true){
+        linkedHashMap = new LinkedHashMap<Integer, Integer>(capacity, 0.75f, true){
             protected boolean removeEldestEntry(Map.Entry eldest) {
                 return size() > capacity;
             }
@@ -20,15 +25,14 @@ class LRUCache {
     }
     
     public int get(int key) {
-        return map.getOrDefault(key, -1);
+        return linkedHashMap.getOrDefault(key, -1);
     }
     
     public void put(int key, int value) {
-        map.put(key, value);
+        linkedHashMap.put(key, value);
     }
-}
 
-class Solution2 {
+    //标准写法,map+双向链表
     Map<Integer, Node> map;
     int capicity, count;
     Node head, tail;
@@ -101,3 +105,12 @@ class Node {
         this.value = value;
     }
 }
+
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
+// @lc code=end
+

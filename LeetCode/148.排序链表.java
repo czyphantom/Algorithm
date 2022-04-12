@@ -1,10 +1,25 @@
-/**
- * 题目：在O(nlogn)时间复杂度和常数级空间复杂度下，对链表进行排序。
+/*
+ * @lc app=leetcode.cn id=148 lang=java
+ *
+ * [148] 排序链表
+ * 题目：给你链表的头结点head ，请将其按升序排列并返回排序后的链表 。
  * 难度：Medium
- * 思路：归并排序或者快排
+ * 思路：归并排序或者快速排序
  */
 
+// @lc code=start
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
 class Solution {
+    //归并排序
     public ListNode sortList(ListNode head) {
         if (head == null || head.next == null) {
             return head;
@@ -36,10 +51,8 @@ class Solution {
         }
         return l1.val < l2.val ? l1 : l2;
     }
-}
 
-//快速排序
-class Solution2 {
+    //快速排序
     public ListNode sortList(ListNode head) {
         quickSort(head,null);
         return head;
@@ -69,6 +82,7 @@ class Solution2 {
         head.val = p.val;
         p.val = tmp;
         return p;
-        
     }
 }
+// @lc code=end
+
