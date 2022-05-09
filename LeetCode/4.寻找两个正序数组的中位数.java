@@ -9,6 +9,8 @@
 
 // @lc code=start
 class Solution {
+
+    //思路1：复杂度O(log(m+n))
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
         int length1 = nums1.length, length2 = nums2.length;
         int totalLength = length1 + length2;
@@ -25,6 +27,7 @@ class Solution {
 
     public int getKthElement(int[] nums1, int[] nums2, int k) {
         /* 主要思路：要找到第 k (k>1) 小的元素，那么就取 pivot1 = nums1[k/2-1] 和 pivot2 = nums2[k/2-1] 进行比较
+         * 这里的 "/" 表示整除
          * nums1 中小于等于 pivot1 的元素有 nums1[0 .. k/2-2] 共计 k/2-1 个
          * nums2 中小于等于 pivot2 的元素有 nums2[0 .. k/2-2] 共计 k/2-1 个
          * 取 pivot = min(pivot1, pivot2)，两个数组中小于等于 pivot 的元素共计不会超过 (k/2-1) + (k/2-1) <= k-2 个
@@ -65,7 +68,8 @@ class Solution {
         }
     }
 
-            if (nums1.length > nums2.length) {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1.length > nums2.length) {
             return findMedianSortedArrays(nums2, nums1);
         }
 

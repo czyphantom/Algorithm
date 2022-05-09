@@ -6,7 +6,7 @@
  * 请你将两个数相加，并以相同形式返回一个表示和的链表。
  * 你可以假设除了数字0之外，这两个数都不会以0开头。
  * 难度：Medium
- * 思路：每个节点相加，注意进位，用一个前置节点记录之前的结果。
+ * 思路：每个节点相加，注意进位，用一个尾节点记录最后的值方便最后处理进位
  */
 
 // @lc code=start
@@ -22,43 +22,31 @@
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode result = null;
-        ListNode pre = null;
-        ListNode head1 = l1;
-        ListNode head2 = l2;
-        int left = 0;
-        while (head1 != null && head2 != null) {
-            int sum = (head1.val + head2.val + left)%10;
-            left = (head1.val + head2.val + left)/10;
-            ListNode node = new ListNode(sum);
-            if (result == null) {
-                result = node;
+        ListNode head = null, tail = null;
+        //进位
+        int carry = 0;
+        while (l1 != null || l2 != null) {
+            int num1 = l1 != null ? l1.val : 0;
+            int num2 = l2 != null ? l2.val : 0;
+            int sum = num1 + num2 + carry;
+            if (head == null) {
+                head = tail = new ListNode(sum % 10);
+            } else {
+                tail.next = new ListNode(sum % 10);
+                tail = tail.next;
             }
-            if (pre != null) {
-                pre.next = node;
+            carry = sum / 10;
+            if (l1 != null) {
+                l1 = l1.next;
             }
-            pre = node;
-            head1 = head1.next;
-            head2 = head2.next;
+            if (l2 != null) {
+                l2 = l2.next;
+            }
         }
-        //交换顺序
-        if (head2 != null) {
-            ListNode temp = head1;
-            head1 = head2;
-            head2 = temp;
+        if (carry > 0) {
+            tail.next = new ListNode(carry);
         }
-        while (head1 != null) {
-            int sum = (head1.val + left)%10;
-            left = (head1.val + left)/10;
-            ListNode node = new ListNode(sum);
-            pre.next = node;
-            pre = node;
-            head1 = head1.next;
-        }
-        if (left != 0) {
-            pre.next = new ListNode(left);
-        }
-        return result;
+        return head;
     }
 }
 // @lc code=end

@@ -1,4 +1,4 @@
-/*
+0/*
  * @lc app=leetcode.cn id=5 lang=java
  *
  * [5] 最长回文子串
@@ -10,50 +10,28 @@
 // @lc code=start
 class Solution {
     public String longestPalindrome(String s) {
-        String result = null;
-        if (s == null || s.length() <= 1) {
-            return s;
+        if (s == null || s.length() < 1) {
+            return "";
         }
-        int max = 1;
-        for (int i = 0;i < s.length()-1;i++) {
-            int before = i-1;
-            int after = i+1;
-            while (before >= 0 && after <= s.length()-1 && s.charAt(before) == s.charAt(after)) {
-                before--;
-                after++;
-            }
-            if (after-before-1 >= max) {
-                result = s.substring(before+1, after);
-                max = after-before-1;
-            }
-            before = i-1;
-            after = i+1;
-            if (before >= 0 && s.charAt(before) == s.charAt(i)) {
-                before--;
-            }
-            while (before >= 0 && after <= s.length()-1 && s.charAt(before) == s.charAt(after)) {
-                before--;
-                after++;
-            }
-            if (after-before-1 >= max) {
-                result = s.substring(before+1, after);
-                max = after-before-1;
-            }
-            before = i-1;
-            after = i+1;
-            if (after < s.length() && s.charAt(after) == s.charAt(i)) {
-                after++;
-            }
-            while (before >= 0 && after <= s.length()-1 && s.charAt(before) == s.charAt(after)) {
-                before--;
-                after++;
-            }
-            if (after-before-1 >= max) {
-                result = s.substring(before+1, after);
-                max = after-before-1;
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expandAroundCenter(s, i, i);
+            int len2 = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
             }
         }
-        return result;
+        return s.substring(start, end + 1);
+    }
+
+    public int expandAroundCenter(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            --left;
+            ++right;
+        }
+        return right - left - 1;
     }
 
     /**
@@ -106,35 +84,6 @@ class Solution {
         }
         return s.substring(begin, begin + maxLen);
     }
-
-    /**
-     * 中心拓展标准解答
-     */
-    public String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) {
-            return "";
-        }
-        int start = 0, end = 0;
-        for (int i = 0; i < s.length(); i++) {
-            int len1 = expandAroundCenter(s, i, i);
-            int len2 = expandAroundCenter(s, i, i + 1);
-            int len = Math.max(len1, len2);
-            if (len > end - start) {
-                start = i - (len - 1) / 2;
-                end = i + len / 2;
-            }
-        }
-        return s.substring(start, end + 1);
-    }
-
-    public int expandAroundCenter(String s, int left, int right) {
-        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
-            --left;
-            ++right;
-        }
-        return right - left - 1;
-    }
-
     
     /**
      * Manacher算法
