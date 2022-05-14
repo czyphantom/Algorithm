@@ -2,7 +2,7 @@
  * @lc app=leetcode.cn id=18 lang=java
  *
  * [18] 四数之和
- * 题目：给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。
+ * 题目：给定一个包含n个整数的数组nums和一个目标值target，判断nums中是否存在四个元素a，b，c和d，使得a + b + c + d的值与target相等？找出所有满足条件且不重复的四元组。
  * 难度：Medium
  * 思路：双指针
  */
