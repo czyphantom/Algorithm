@@ -44,7 +44,7 @@ class Solution {
      */
     public int trap(int[] height) {
         int ans = 0;
-        Deque<Integer> stack = new LinkedList<Integer>();
+        Stack<Integer> stack = new Stack<Integer>();
         int n = height.length;
         for (int i = 0; i < n; ++i) {
             while (!stack.isEmpty() && height[i] > height[stack.peek()]) {

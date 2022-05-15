@@ -10,20 +10,12 @@
 // @lc code=start
 class Solution {
     public int maxSubArray(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return Integer.MIN_VALUE;
+        int pre = 0, maxAns = nums[0];
+        for (int x : nums) {
+            pre = Math.max(pre + x, x);
+            maxAns = Math.max(maxAns, pre);
         }
-        int max = nums[0];
-        int sum = 0;
-        for (int i = 0;i < nums.length;i++) {
-            if (sum < 0) {
-                sum = nums[i];
-            } else {
-                sum += nums[i];
-            }
-            max = Math.max(sum, max);
-        } 
-        return max;  
+        return maxAns;
     }
 }
 // @lc code=end
