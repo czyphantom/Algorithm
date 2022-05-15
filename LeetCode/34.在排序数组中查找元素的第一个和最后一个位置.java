@@ -29,9 +29,9 @@ class Solution {
                 if((mid-1 >= begin && nums[mid-1] != target) || mid == begin) {
                     res = mid;
                     break;
-                }
-                else
+                } else {
                     end = mid - 1;
+                }     
             }
         }
         return res;
@@ -49,9 +49,9 @@ class Solution {
                 if((mid+1 <= end && nums[mid+1] != target) || mid == end) {
                     res = mid;
                     break;
-                }
-                else
+                } else {
                     begin = mid+1;
+                }
             }
         }
         return res;

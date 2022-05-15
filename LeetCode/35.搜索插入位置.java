@@ -10,24 +10,19 @@
 
 // @lc code=start
 class Solution {
-public int searchInsert(int[] nums, int target) {
-        int begin = 0, end = nums.length-1;
-        int res = -1;
-        while(begin <= end){
-            int mid = (begin+end)/2;
-            if(nums[mid] == target){
-                res = mid;
-                break;
-            }else if(nums[mid]<target){
-                begin = mid+1;
-                res = begin;
-            }else{
-                end = mid-1;
-                res = begin;
+    public int searchInsert(int[] nums, int target) {
+        int n = nums.length;
+        int left = 0, right = n - 1, ans = n;
+        while (left <= right) {
+            int mid = ((right - left) >> 1) + left;
+            if (target <= nums[mid]) {
+                ans = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
             }
-            
         }
-        return res;
+        return ans;
     }
 }
 // @lc code=end

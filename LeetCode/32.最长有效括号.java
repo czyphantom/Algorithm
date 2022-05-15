@@ -16,17 +16,14 @@ class Solution {
         for(int j = 0;j < s.length();j++){
             if(s.charAt(j)=='(') {
                 stack.push(j);  
-            }          
-            else {
+            } else {
                 if (stack.isEmpty()) {
                     left = j;
-                }
-                else{
+                } else{
                     stack.pop();
                     if (stack.isEmpty()) {
                         max = Math.max(max, j-left);
-                    }
-                    else {
+                    }   else {
                         max = Math.max(max, j - stack.peek());
                     }
                 }
