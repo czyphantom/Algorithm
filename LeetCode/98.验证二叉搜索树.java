@@ -84,6 +84,7 @@ class Solution {
     }
 
     int last = Integer.MIN_VALUE;
+    
     public boolean isValidBST(TreeNode root){
         if (root == null) {
             return true;

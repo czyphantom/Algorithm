@@ -21,37 +21,6 @@
  */
 class Solution {
     public ListNode partition(ListNode head, int x) {
-        ListNode small = null, greater = null,p = head, sHead = head, gHead = null;
-        while (p != null) {
-            if (p.val < x) {
-                if (small == null) {
-                    small = p;
-                    sHead = small;
-                } else {
-                    small.next = p;
-                    small = p;
-                }
-            } else {
-                if (greater == null) {
-                    greater = p;
-                    gHead = greater;
-                } else {
-                    greater.next = p;
-                    greater = p;
-                }
-            }
-             p = p.next;
-        }
-        if (small != null) {
-            small.next = gHead;
-        }
-        if (greater != null) {
-            greater.next = null;
-        }  
-        return sHead;
-    }
-
-    public ListNode partition(ListNode head, int x) {
         ListNode dummy1 = new ListNode(0), dummy2 = new ListNode(0); 
         ListNode curr1 = dummy1, curr2 = dummy2;
         while (head != null){

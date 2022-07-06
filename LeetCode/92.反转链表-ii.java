@@ -2,7 +2,7 @@
  * @lc app=leetcode.cn id=92 lang=java
  *
  * [92] 反转链表 II
- * 题目：给你单链表的头指针 head 和两个整数 left 和 right ，其中 left <= right 。请你反转从位置 left 到位置 right 的链表节点，返回 反转后的链表 。
+ * 题目：给你单链表的头指针head和两个整数left和right，其中left<=right。请你反转从位置left到位置right的链表节点，返回反转后的链表。
  * 难度：Medium
  * 思路：用冗余节点保存即可
  */
