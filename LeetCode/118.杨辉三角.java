@@ -2,7 +2,7 @@
  * @lc app=leetcode.cn id=118 lang=java
  *
  * [118] 杨辉三角
- * 题目：给定一个非负整数 numRows，生成「杨辉三角」的前 numRows 行。
+ * 题目：给定一个非负整数numRows，生成「杨辉三角」的前numRows行。
  * 在「杨辉三角」中，每个数是它左上方和右上方的数的和。
  * 难度：Easy
  * 思路：水题

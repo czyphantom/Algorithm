@@ -2,9 +2,9 @@
  * @lc app=leetcode.cn id=114 lang=java
  *
  * [114] 二叉树展开为链表
- * 题目：给你二叉树的根结点 root ，请你将它展开为一个单链表：
- * 展开后的单链表应该同样使用 TreeNode ，其中 right 子指针指向链表中下一个结点，而左子指针始终为 null 。
- * 展开后的单链表应该与二叉树 先序遍历 顺序相同。
+ * 题目：给你二叉树的根结点root ，请你将它展开为一个单链表：
+ * 展开后的单链表应该同样使用TreeNode，其中right子指针指向链表中下一个结点，而左子指针始终为null 。
+ * 展开后的单链表应该与二叉树先序遍历顺序相同。
  * 难度：Medium
  * 思路：递归
  */
@@ -45,7 +45,7 @@ class Solution {
         root.right = tmp;
     }
 
-        public void flatten(TreeNode root) {
+    public void flatten(TreeNode root) {
         TreeNode cur = root;
         while (cur != null) {
             if (cur.left != null) {

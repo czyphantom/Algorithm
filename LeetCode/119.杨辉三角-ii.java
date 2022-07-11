@@ -2,7 +2,7 @@
  * @lc app=leetcode.cn id=119 lang=java
  *
  * [119] 杨辉三角 II
- * 题目：给定一个非负索引 rowIndex，返回「杨辉三角」的第 rowIndex 行。
+ * 题目：给定一个非负索引rowIndex，返回「杨辉三角」的第rowIndex行。
  * 难度：Easy
  * 思路：水题
  */
