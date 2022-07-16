@@ -2,11 +2,11 @@
  * @lc app=leetcode.cn id=127 lang=java
  *
  * [127] 单词接龙
- * 题目：字典 wordList 中从单词 beginWord 和 endWord 的 转换序列 是一个按下述规格形成的序列 beginWord -> s1 -> s2 -> ... -> sk：
+ * 题目：字典wordList中从单词beginWord和endWord的转换序列是一个按下述规格形成的序列beginWord -> s1 -> s2 -> ... -> sk：
  * 每一对相邻的单词只差一个字母。
- * 对于 1 <= i <= k 时，每个 si 都在 wordList 中。注意， beginWord 不需要在 wordList 中。
+ * 对于1 <= i <= k时，每个si 都在wordList中。注意,beginWord不需要在wordList中。
  * sk == endWord
- * 给你两个单词 beginWord 和 endWord 和一个字典 wordList ，返回 从 beginWord 到 endWord 的 最短转换序列 中的 单词数目 。如果不存在这样的转换序列，返回 0 。
+ * 给你两个单词beginWord和endWord和一个字典wordList，返回从beginWord到endWord的最短转换序列中的单词数目。如果不存在这样的转换序列，返回0 。
  * 难度：Hard
  * 思路：
  */
