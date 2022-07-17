@@ -11,33 +11,33 @@
 class Solution {
     public List<List<String>> partition(String s) {
         List<List<String>> result = new ArrayList<>();
-        if (s == null || s.length() == 0) {
-            return result;
-        }
-        solve(s, 0, new ArrayList<>(), result);
+        backTrace(s, 0, new ArrayList<>(), result);
         return result;
     }
-    
-    private void solve(String s, int begin, List<String> temp, List<List<String>> result) {
-        if (begin == s.length()) {
-            result.add(new ArrayList<>(temp));
+
+    private void backTrace(String s, int cur, List<String> temp, List<List<String>> result) {
+        if (cur >= s.length() && temp.size() != 0) {
+            result.add(new ArrayList<String>(temp));
             return;
         }
-        for (int i = begin; i < s.length(); i++) {
-            if (isMatch(s, begin, i)) {
-                temp.add(s.substring(begin, i + 1));
-                solve(s, i + 1, temp, result);
-                temp.remove(temp.size() - 1);
+        for (int i = cur;i < s.length();i++) {
+            if (isPalindrome(s, cur, i)) {
+                temp.add(s.substring(cur, i+1));
+                backTrace(s, i+1, temp, result);
+                temp.remove(temp.size()-1);
             }
         }
     }
-    
-    private boolean isMatch(String s, int low, int high) {
-        while (low < high) {
-            if (s.charAt(low++) != s.charAt(high--)) {
+
+    private boolean isPalindrome(String s, int begin, int end) {
+        while (begin < end) {
+            if (s.charAt(begin) != s.charAt(end)) {
                 return false;
-            } 
-        }   
+            } else {
+                begin++;
+                end--;
+            }
+        }
         return true;
     }
 }
