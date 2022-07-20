@@ -11,6 +11,28 @@
 
 // @lc code=start
 class Solution {
+
+    //我的解法，有点像求解最长子数组和，只要某个连续子数组和小于0，那么从那个点开始就不能环绕一圈
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        if (gas == null || gas.length == 0 || cost == null || gas.length != cost.length) {
+            return -1;
+        }
+        int len = gas.length;
+        int index = 0, sum = 0,total = 0;;
+        for (int i = 0;i < len;i++) {
+            total += gas[i]-cost[i];
+            if (sum < 0) {
+                index = i;
+                sum = 0;
+            } 
+            sum += gas[i]-cost[i];
+        }
+        if (total < 0) {
+            return -1;
+        }
+        return index;
+    }
+
     public int canCompleteCircuit(int[] gas, int[] cost) {
         int rest = 0, run = 0, start = 0;
         for (int i = 0; i < gas.length; ++i) {
@@ -23,6 +45,8 @@ class Solution {
         }
         return rest < 0 ? -1: start;
     }
+
+
 }
 // @lc code=end
 
