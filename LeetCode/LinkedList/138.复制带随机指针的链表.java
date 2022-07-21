@@ -29,35 +29,36 @@ class Solution {
         if (head == null) {
             return null;
         }
-        Node pCur = head;
-        //先复制节点到原链表后面
-        while (pCur != null) {
-            Node node = new Node(pCur.val);
-            node.next = pCur.next;
-            pCur.next = node;
-            pCur = node.next;
+        //第一步，先复制节点到原节点后面
+        Node p = head;
+        while (p != null) {
+            Node next = p.next;
+            Node newNode = new Node(p.val);
+            p.next = newNode;
+            newNode.next = next;
+            p = next;
         }
-        //加入随机指针
-        pCur = head;
-        while (pCur != null) {
-            if (pCur.random != null) {
-                pCur.next.random = pCur.random.next;
+
+        //第二步，复制节点的random节点
+        Node q = head;
+        while (q != null) {
+            if (q.random != null) {
+                q.next.random = q.random.next;
             }
-            pCur = pCur.next.next;
+            q = q.next.next;
         }
-        //断开连接
-        Node pHead = head.next;
-        Node cur = pHead;
-        pCur = head;
-        while (pCur != null) {
-            pCur.next = pCur.next.next;
-            if (cur.next != null) {
-                cur.next = cur.next.next;
+
+        //第三步，断开连接
+        Node result = head.next,r = head;
+        while (r != null) {
+            Node temp = r.next;
+            r.next = r.next.next;
+            if (temp.next != null) {
+                temp.next = temp.next.next;
             }
-            cur = cur.next;
-            pCur = pCur.next;
+            r = r.next;
         }
-        return pHead;
+        return result;
     }
 }
 // @lc code=end
