@@ -46,22 +46,31 @@ public class Sort {
      * 冒泡排序，基本思想是两两比较相邻元素，如果前者比后者大，则交换，一趟下来可得到一个元素的正确位置。
      * 平均复杂度O(n^2)，是稳定排序
      */
-    public void bubleSort(int[] a) {
-        boolean flag = false;
-        for (int i = 0;i < a.length;i++) {
-            for (int j = 0;j < a.length-i-1;j++) {
-                if (a[j] > a[j+1]) {
-                    int temp  = a[j + 1];
-                    a[j + 1] = a[j];
-                    a[j] = temp;
-                    flag = true;
-                }
-            }
-            //如果一趟下来没发生交换，说明有序了，直接跳出循环
-            if (!flag) {
-                break;
-            }
+    public void bubbleSort(int[] nums) {
+        int last = nums.length-1;
+        int i = 0;
+        while (i < last) {
+            last = bubble(nums, i, last);
         }
+    }
+
+    private int bubble(int[] nums, int begin, int end) {
+        //用来记录最后一个有序序列的位置
+        int last = begin;
+        while (begin < end) {
+            if (nums[begin] > nums[begin+1]) {
+                swap(nums, begin, begin+1);
+                last = begin+1;
+            }
+            begin++;
+        }
+        return last;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 
     /**
@@ -229,7 +238,7 @@ public class Sort {
     private void merge(int[] a, int begin, int mid, int end) {
         int[] temp = new int[end-begin+1];
         int i = begin, j = mid + 1;
-        int m = mid,   n = end;
+        int m = mid, n = end;
         int k = 0;
     
         while (i <= m && j <= n) {
