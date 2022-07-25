@@ -25,34 +25,34 @@
  */
 class Solution {
 
-    //递归
-    public List<Integer> preorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<Integer>();
-        if (root != null) {
-            list.add(root.val);
-            list.addAll(preorderTraversal(root.left));
-            list.addAll(preorderTraversal(root.right));
-        }
-        return list;
-    }
-
-    //非递归
+    //递归解法
+    List<Integer> result = new ArrayList<>();
     public List<Integer> preorderTraversal(TreeNode root) {
         if (root == null) {
-            return new ArrayList<Integer>();
+            return result;
         }
+        result.add(root.val);
+        preorderTraversal(root.left);
+        preorderTraversal(root.right);
+        return result;
+    }
+
+    //非递归解法
+    public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer> result = new ArrayList<>();
+        if (root == null) {
+            return result;
+        }
         Stack<TreeNode> stack = new Stack<>();
         stack.push(root);
         while (!stack.isEmpty()) {
-            TreeNode node = stack.pop();
-            result.add(node.val);
-            //放入栈的顺序要反过来
-            if (node.right != null) {
-                stack.push(node.right);
+            TreeNode cur = stack.pop();
+            result.add(cur.val);
+            if (cur.right != null) {
+                stack.push(cur.right);
             }
-            if (node.left != null) {
-                stack.push(node.left);
+            if (cur.left != null) {
+                stack.push(cur.left);
             }
         }
         return result;
