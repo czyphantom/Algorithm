@@ -15,13 +15,13 @@ class Solution {
         int begin = 0,end = nums.length-1;
         while (begin < end) {
             int mid = (end-begin)/2+begin;
-            if (nums[mid] > nums[end]) {
-                begin = mid+1;
-            } else {
+            if (nums[mid] < nums[end]) {
                 end = mid;
+            } else if (nums[mid] > nums[end]) {
+                begin = mid+1;
             }
         }
-        return nums[end];
+        return nums[begin];
     }
 }
 // @lc code=end
