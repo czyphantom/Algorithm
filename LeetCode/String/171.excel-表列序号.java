@@ -10,11 +10,15 @@
 // @lc code=start
 class Solution {
     public int titleToNumber(String columnTitle) {
-        int res = 0;
-        for(int i = 0;i < columnTitle.length();i++) {
-            res = res * 26 + columnTitle.charAt(i) - 'A' + 1;
+        if (columnTitle == null || columnTitle.length() == 0) {
+            return 0;
         }
-        return res;
+        int result = 0;
+        for (int i = 0;i < columnTitle.length();i++) {
+            int cur = columnTitle.charAt(i) - 'A';
+            result = result * 26 + cur + 1;
+        }
+        return result;
     }
 }
 // @lc code=end
