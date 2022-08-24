@@ -34,7 +34,7 @@ class BSTIterator {
 
     public BSTIterator(TreeNode root) {
         cur = root;
-        stack = new Stack<TreeNode>();
+        stack = new Stack<>();
     }
     
     public int next() {
@@ -52,6 +52,7 @@ class BSTIterator {
         return cur != null || !stack.isEmpty();
     }
 }
+
 
 /**
  * Your BSTIterator object will be instantiated and called as such:
