@@ -2,6 +2,9 @@
  * @lc app=leetcode.cn id=190 lang=java
  *
  * [190] 颠倒二进制位
+ * 题目：颠倒给定的 32 位无符号整数的二进制位。
+ * 难度：Easy
+ * 思路：水题
  */
 
 // @lc code=start

@@ -12,37 +12,31 @@
 // @lc code=start
 class Solution {    
     public int numIslands(char[][] grid) {
-        int result = 0;
         if (grid == null || grid.length == 0 || grid[0].length == 0) {
             return 0;
         }
-        boolean[][] flag = new boolean[grid.length][grid[0].length];
+        boolean visited[][] = new boolean[grid.length][grid[0].length];
+        int count = 0;
         for (int i = 0;i < grid.length;i++) {
             for (int j = 0;j < grid[0].length;j++) {
-                if (grid[i][j] == '1' && flag[i][j] == false) {
-                    dfs(grid, flag, i, j);
-                    result++;
+                if (grid[i][j] == '1' && !visited[i][j]) {
+                    dfs(grid, i, j, visited);
+                    count++;
                 }
             }
-        }
-        return result;
+        } 
+        return count;
     }
 
-    private void dfs(char[][] grid, boolean[][] flags, int i, int j) {
-        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length) {
+    private void dfs(char[][] grid, int i, int j, boolean[][] visited) {
+        if (i < 0 || i >= grid.length || j < 0 || j >= grid[0].length || grid[i][j] == '0' || visited[i][j]) {
             return;
         }
-        if (grid[i][j] == '0') {
-            return;
-        }
-        if (flags[i][j] == true) {
-            return;
-        }
-        flags[i][j] = true;
-        dfs(grid, flags, i+1, j);
-        dfs(grid, flags, i-1, j);
-        dfs(grid, flags, i, j+1);
-        dfs(grid, flags, i, j-1);
+        visited[i][j] = true;
+        dfs(grid, i+1, j, visited);
+        dfs(grid, i-1, j, visited);
+        dfs(grid, i, j+1, visited);
+        dfs(grid, i, j-1, visited);
     }
 
     class UnionFind {

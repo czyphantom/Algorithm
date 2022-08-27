@@ -10,11 +10,7 @@
 // @lc code=start
 class Solution {
     public void rotate(int[] nums, int k) {
-        if (nums == null || nums.length == 0) {
-            return;
-        }
-        k = k % nums.length;
-
+        k %= nums.length;
         reverse(nums, 0, nums.length-1);
         reverse(nums, 0, k-1);
         reverse(nums, k, nums.length-1);
@@ -29,7 +25,6 @@ class Solution {
             end--;
         }
     }
-
 
     //方法2，环状替换
     public void rotate(int[] nums, int k) {
