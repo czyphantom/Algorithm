@@ -6,7 +6,7 @@
  * 请你将两个数相加，并以相同形式返回一个表示和的链表。
  * 你可以假设除了数字0之外，这两个数都不会以0开头。
  * 难度：Medium
- * 思路：每个节点相加，注意进位，用一个尾节点记录最后的值方便最后处理进位
+ * 思路：每个节点相加，注意进位，用一个尾节点记录最后的值方便最后处理进位，也可以用递归做
  */
 
 // @lc code=start
@@ -46,6 +46,27 @@ class Solution {
         if (carry > 0) {
             tail.next = new ListNode(carry);
         }
+        return head;
+    }
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        ListNode head = new ListNode((l1.val+l2.val)%10);
+        if (l1.val+l2.val >= 10) {
+            if (l1.next == null) {
+                l1.next = new ListNode(1);
+            } else if (l2.next == null) {
+                l2.next = new ListNode(1);
+            } else {
+                l1.next.val += 1;
+            }
+        }
+        head.next = addTwoNumbers(l1.next, l2.next);
         return head;
     }
 }
