@@ -10,14 +10,16 @@
 // @lc code=start
 class Solution {
     public int maxArea(int[] height) {
-        int begin = 0,end = height.length-1;
-        int max = 0;
-        while (begin < end) {
-            max = Math.max(max, Math.min(height[end], height[begin])* (end-begin));
-            if (height[begin] <= height[end]) {
-                begin++;
+        if (height == null || height.length == 0) {
+            return 0;
+        }
+        int left = 0, right = height.length-1,max = 0;
+        while (left < right) {
+            max = Math.max(max, Math.min(height[left], height[right])* (right-left));
+            if (height[left] < height[right]) {
+                left++;
             } else {
-                end--;
+                right--;
             }
         }
         return max;

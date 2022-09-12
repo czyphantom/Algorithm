@@ -10,28 +10,35 @@
 // @lc code=start
 class Solution {
     public String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) {
-            return "";
+        if (s.length() == 1) {
+            return s;
         }
-        int start = 0, end = 0;
-        for (int i = 0; i < s.length(); i++) {
-            int len1 = expandAroundCenter(s, i, i);
-            int len2 = expandAroundCenter(s, i, i + 1);
-            int len = Math.max(len1, len2);
-            if (len > end - start) {
-                start = i - (len - 1) / 2;
-                end = i + len / 2;
+        String result = "";
+        for (int i = 0;i < s.length();i++) {
+            String s1 = getPalindrome(s, i, i);
+            if (s1.length() > result.length()) {
+                result = s1;
+            }
+            if (i < s.length()-1 && s.charAt(i) == s.charAt(i+1)) {
+                String s2 = getPalindrome(s, i, i+1);
+                if (s2.length() > result.length()) {
+                    result = s2;
+                }
             }
         }
-        return s.substring(start, end + 1);
+        return result;
     }
 
-    public int expandAroundCenter(String s, int left, int right) {
-        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
-            --left;
-            ++right;
+    private String getPalindrome(String s, int i, int j) {
+        while (i >= 0 && j < s.length()) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return j-i > 1 ? s.substring(i+1, j) : "";
+            } else {
+                i--;
+                j++;
+            }
         }
-        return right - left - 1;
+        return i >= 0 && j < s.length() ? s.substring(i,j) : s.substring(i+1, j);
     }
 
     /**
