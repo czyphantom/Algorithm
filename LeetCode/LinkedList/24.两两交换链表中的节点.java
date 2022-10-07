@@ -33,15 +33,20 @@ class Solution {
 
     //非递归解法
     public ListNode swapPairs(ListNode head) {
-        ListNode dummy = new ListNode(-1);
-        ListNode pre = dummy;
+        ListNode dummy = new ListNode();
         dummy.next = head;
-        while (pre.next != null && pre.next.next != null) {
-            ListNode temp = pre.next.next;
-            pre.next.next = temp.next;
-            temp.next = pre.next;
-            pre.next = temp;
-            pre = temp.next;
+        ListNode pre = dummy, p = head;
+        while (p != null) {
+            ListNode q = p.next;
+            ListNode next = null;
+            if (q != null) {
+                next = q.next;
+                pre.next = q;
+                q.next = p;
+                p.next = next;
+            }
+            pre = p;
+            p = next; 
         }
         return dummy.next;
     }
