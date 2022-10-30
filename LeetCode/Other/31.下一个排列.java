@@ -24,21 +24,21 @@ class Solution {
             while (j >= 0 && nums[j] <= nums[i]) {
                 j--;
             }
-            swapTwoNums(nums, i, j);
+            swap(nums, i, j);
         }
-        swap(nums, i + 1, nums.length-1);
+        reverse(nums, i + 1, nums.length-1);
     }
 
 
-    private void swap(int[] nums, int begin, int end) {
+    private void reverse(int[] nums, int begin, int end) {
         while (begin < end) {
-            swapTwoNums(nums, begin, end);
+            swap(nums, begin, end);
             begin++;
             end--;
         }
     }
 
-    private void swapTwoNums(int[] nums, int begin, int end) {
+    private void swap(int[] nums, int begin, int end) {
         int temp = nums[begin];
         nums[begin] = nums[end];
         nums[end] = temp;
