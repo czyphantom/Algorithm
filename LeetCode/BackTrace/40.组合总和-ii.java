@@ -12,20 +12,18 @@
 // @lc code=start
 class Solution {
     public List<List<Integer>> combinationSum2(int[] candidates, int target) {
-        List<List<Integer>> result = new ArrayList<>();
-        if (candidates == null || candidates.length == 0) {
-            return result;
-        }
         Arrays.sort(candidates);
-        backTrace(result, new ArrayList<Integer>(), candidates, target, 0);
+        List<List<Integer>> result = new ArrayList<>();
+        backTrace(candidates, 0, target, result, new ArrayList<Integer>());
         return result;
     }
 
-    private void backTrace(List<List<Integer>> result, List<Integer> temp, int[] candidates, int left, int cur) {
-        if (left == 0) {
-            result.add(new ArrayList<Integer>(temp));
+    private void backTrace(int[] candidates, int cur, int target, List<List<Integer>> result, List<Integer> temp) {
+        if (target == 0) {
+            result.add(new ArrayList<>(temp));
+            return;
         }
-        if (left < 0) {
+        if (cur >= candidates.length || target < 0) {
             return;
         }
         for (int i = cur;i < candidates.length;i++) {
@@ -33,7 +31,7 @@ class Solution {
                 continue;
             }
             temp.add(candidates[i]);
-            backTrace(result, temp, candidates, left-candidates[i], i+1);
+            backTrace(candidates, i+1, target-candidates[i], result, temp);
             temp.remove(temp.size()-1);
         }
     }

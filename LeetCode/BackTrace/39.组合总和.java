@@ -12,26 +12,22 @@
 class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         List<List<Integer>> result = new ArrayList<>();
-        Arrays.sort(candidates);
-        if (candidates == null || candidates.length == 0) {
-            return result;
-        }
-        backTrace(result, new ArrayList<Integer>(), candidates, target, 0);
+        backTrace(candidates, 0, target, result, new ArrayList<Integer>());
         return result;
     }
 
-    private void backTrace(List<List<Integer>> result, List<Integer> current, int[] candidates, int left, int cur) {
-        if (left < 0) {
+    private void backTrace(int[] candidates, int cur, int target, List<List<Integer>> result, List<Integer> temp) {
+        if (target == 0) {
+            result.add(new ArrayList<>(temp));
             return;
         }
-        if (left == 0) {
-            result.add(new ArrayList<>(current));
+        if (cur >= candidates.length || target < 0) {
             return;
         }
         for (int i = cur;i < candidates.length;i++) {
-            current.add(candidates[i]);
-            backTrace(result, current, candidates, left-candidates[i], i);
-            current.remove(current.size()-1);
+            temp.add(candidates[i]);
+            backTrace(candidates, i, target-candidates[i], result, temp);
+            temp.remove(temp.size()-1);
         }
     }
 }
