@@ -6,22 +6,18 @@
  * 数组中的每个元素代表你在该位置可以跳跃的最大长度。
  * 判断你是否能够到达最后一个下标。
  * 难度：Medium
- * 思路：维护一个count来记录当前能走到的最远距离
+ * 思路：贪心
  */
 
 // @lc code=start
 class Solution {
     public boolean canJump(int[] nums) {
-        int count = nums[0];
-        if(nums.length == 1) {
-            return true;
-        }
-        for(int i = 1;i < nums.length;i++) {
-            count--;
-            if(count < 0) {
+        int cur = 0;
+        for (int i = 0;i < nums.length;i++) {
+            cur = Math.max(cur, nums[i]+i);
+            if (cur <= i && cur < nums.length-1) {
                 return false;
             }
-            count = Math.max(count,nums[i]);
         }
         return true;
     }
