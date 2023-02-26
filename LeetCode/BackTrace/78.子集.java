@@ -11,20 +11,20 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
         List<List<Integer>> result = new ArrayList<>();
-        backTrace(result, new ArrayList<Integer>(), 0, nums);
+        backTrace(nums, result, new ArrayList<Integer>(), 0);
         return result;
     }
 
-    private void backTrace(List<List<Integer>> result, List<Integer> temp, int cur, int[] nums) {
-        result.add(new ArrayList<Integer>(temp));
+    private void backTrace(int[] nums, List<List<Integer>> result, List<Integer> list, int cur) {
+        result.add(new ArrayList<Integer>(list));
         for (int i = cur;i < nums.length;i++) {
-            temp.add(nums[i]);
-            backTrace(result, temp, i+1, nums);
-            temp.remove(temp.size()-1);
+            list.add(nums[i]);
+            backTrace(nums, result, list, i+1);
+            list.remove(list.size()-1);
         }
     }
 
-    //官方接发
+    //官方解法
     List<Integer> t = new ArrayList<Integer>();
     List<List<Integer>> ans = new ArrayList<List<Integer>>();
 
