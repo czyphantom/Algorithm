@@ -11,24 +11,26 @@
 // @lc code=start
 class Solution {
     public int removeDuplicates(int[] nums) {
-        int count = 1;
-        int j = 1;
-        if(nums.length < 2) {
+        if (nums == null || nums.length <= 2) {
             return nums.length;
         }
-        for(int i = 1;i < nums.length;i++) {
-            if(nums[i] == nums[i-1] && count < 2) {
-                count++;
-                nums[j++] = nums[i];
-            } else if(nums[i] == nums[i-1] && count >= 2) {
-                count++;
+        int count = 0,cur = 0, i = 0;
+        while (i < nums.length) {
+            nums[cur] = nums[i];
+            if (i < nums.length - 2 && nums[i+1] == nums[i] && nums[i+2] == nums[i]) {
+                nums[cur+1] = nums[i+1];
+                int j = i+2;
+                while (j < nums.length && nums[j] == nums[i]) {
+                    j++;
+                }
+                i = j;
+                cur = cur+2;
             } else {
-                count = 1;
-                nums[j++] = nums[i];
+                i++;
+                cur++;
             }
         }
-    
-        return j;
+        return cur;
     }
 }
 // @lc code=end
