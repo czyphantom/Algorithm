@@ -21,20 +21,23 @@
  */
 class Solution {
     public ListNode deleteDuplicates(ListNode head) {
-        ListNode dummy = new ListNode();
+        ListNode dummy = new ListNode(-1);
         dummy.next = head;
-        ListNode p = head;
-        ListNode pre = dummy;
+        ListNode pre = dummy,p = head;
         while (p != null) {
-            if (p.next != null && p.next.val == p.val) {
-                while (p.next != null && p.next.val == p.val) {
-                    p = p.next;
-                }
-                pre.next = p.next;
-                p = p.next;
+            ListNode q = p.next;
+            int val = p.val;
+            boolean needDelete = false;
+            while (q != null && q.val == val) {
+                q = q.next; 
+                needDelete = true;
+            }
+            if (needDelete) {
+                pre.next = q;
+                p = q;
             } else {
                 pre = p;
-                p = p.next;
+                p = q;
             }
         }
         return dummy.next;
