@@ -21,21 +21,24 @@
  */
 class Solution {
     public ListNode partition(ListNode head, int x) {
-        ListNode dummy1 = new ListNode(0), dummy2 = new ListNode(0); 
-        ListNode curr1 = dummy1, curr2 = dummy2;
-        while (head != null){
-            if (head.val < x) {
-                curr1.next = head;
-                curr1 = head;
+        ListNode small = new ListNode(-1);
+        ListNode big = new ListNode(-1);
+        ListNode p = head;
+        ListNode smallP = small;
+        ListNode bigQ = big;
+        while (p != null) {
+            if (p.val < x) {
+                smallP.next = p;
+                smallP = p;
             } else {
-                curr2.next = head;
-                curr2 = head;
+                bigQ.next = p;
+                bigQ = p;
             }
-            head = head.next;
+            p = p.next;
         }
-        curr2.next = null;
-        curr1.next = dummy2.next;
-        return dummy1.next;
+        smallP.next = big.next;
+        bigQ.next = null;
+        return small.next;
     }
 }
 // @lc code=end
