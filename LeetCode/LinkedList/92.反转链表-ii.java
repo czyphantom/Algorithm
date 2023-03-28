@@ -20,27 +20,27 @@
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-          if (head == null || m > n) {
+          if (head == null || left > right) {
             return null;
         }
         //设置一个dummyNode便于操作
         ListNode dummyNode = new ListNode(-1);
         dummyNode.next = head;
         head = dummyNode;
-        //到m-n区间前面一个节点
-        for (int i = 1; i < m; i++) {
+        //到right-left区间前面一个节点
+        for (int i = 1; i < left; i++) {
             if (head == null) {
                 return null;
             }
             head = head.next;
         }
-        // 保存n-m区间前一个节点
+        // 保存right-left区间前一个节点
         ListNode pre = head;
-        // 保存n-m区间第一个节点
+        // 保存right-let区间第一个节点
         ListNode fNode = head.next;
         ListNode lastNode = null;
         ListNode curNode = fNode;
-        for (int i = m; i <= n; i++) {
+        for (int i = left; i <= right; i++) {
             ListNode tmp = curNode.next;
             curNode.next = lastNode;
             lastNode = curNode;
