@@ -37,6 +37,7 @@ class Solution {
             return;
         }
         inorder(root.left);
+        //不满足升序条件，则找到了一个交换的节点，找到两次即可
         if (pre != null && pre.val > root.val) {
             if (t1 == null) {
                 t1 = pre;

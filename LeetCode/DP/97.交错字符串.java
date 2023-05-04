@@ -21,7 +21,6 @@ class Solution {
         int len1 = s1.length();
         int len2 = s2.length();
         boolean[][] dp = new boolean[len1+1][len2+1];
-        //如果其中一个串为空串，只要判断其中一个串和s3是否相等
         dp[0][0] = true;
         for (int i = 1;i <= len1;i++) {
             dp[i][0] = dp[i-1][0] && (s1.charAt(i-1) == s3.charAt(i-1));
