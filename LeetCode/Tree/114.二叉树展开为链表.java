@@ -49,6 +49,7 @@ class Solution {
         TreeNode cur = root;
         while (cur != null) {
             if (cur.left != null) {
+                //左节点的最右节点
                 TreeNode p = cur.left;
                 while (p.right != null) {
                     p = p.right;

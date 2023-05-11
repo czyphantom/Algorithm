@@ -38,6 +38,7 @@ class Solution {
         temp.add(current.val);
         leftSum -= current.val;
         if (current.left == null && current.right == null && leftSum == 0) {
+            //这里不能return，因为递归到null之后会return，如果需要先return得先把temp里最后一个移除
             result.add(new ArrayList<Integer>(temp));
         }
         backTrace(current.left, leftSum, result, temp);
