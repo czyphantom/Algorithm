@@ -6,31 +6,29 @@
  * 向数组中的每个整数前添加'+'或'-'，然后串联起所有整数，可以构造一个表达式
  * 返回可以通过上述方法构造的、运算结果等于target的不同表达式的数目。
  * 难度：Medium
- * 思路：回溯或者动态规划
+ * 思路：回溯或者动态规划（背包问题）
  */
 
 // @lc code=start
 class Solution {
+
     private int result = 0;
 
     public int findTargetSumWays(int[] nums, int target) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
-        backTrace(nums, 0, target);
+        backTrace(nums, target, 0, 0);
         return result;
     }
 
-    private void backTrace(int[] nums, int index, int target) {
-        if (target == 0 && index == nums.length) {
+    private void backTrace(int[] nums, int target, int curSum, int curIndex) {
+        if (curSum == target && curIndex == nums.length) {
             result++;
             return;
         }
-        if (index >= nums.length) {
+        if (curIndex == nums.length) {
             return;
         }
-        backTrace(nums, index+1, target-nums[index]);
-        backTrace(nums, index+1, target+nums[index]);
+        backTrace(nums, target, curSum+nums[curIndex], curIndex+1);
+        backTrace(nums, target, curSum-nums[curIndex], curIndex+1);
     }
 
     public int findTargetSumWays(int[] nums, int target) {
