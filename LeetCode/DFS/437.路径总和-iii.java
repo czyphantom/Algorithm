@@ -25,7 +25,7 @@
  */
 class Solution {
     public int pathSum(TreeNode root, int targetSum) {
-        Map<Long, Integer> prefix = new HashMap<Long, Integer>();
+        Map<Long, Integer> prefix = new HashMap<>();
         prefix.put(0L, 1);
         return dfs(root, prefix, 0, targetSum);
     }
@@ -34,16 +34,16 @@ class Solution {
         if (root == null) {
             return 0;
         }
-
-        int ret = 0;
         curr += root.val;
 
-        ret = prefix.getOrDefault(curr - targetSum, 0);
+        //已有的满足要求的答案数
+        int ret = prefix.getOrDefault(curr - targetSum, 0);
+        //当前位置的前缀和
         prefix.put(curr, prefix.getOrDefault(curr, 0) + 1);
         ret += dfs(root.left, prefix, curr, targetSum);
         ret += dfs(root.right, prefix, curr, targetSum);
+        //路径回退
         prefix.put(curr, prefix.getOrDefault(curr, 0) - 1);
-
         return ret;
     }
 }

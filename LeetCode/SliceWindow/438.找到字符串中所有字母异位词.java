@@ -11,20 +11,21 @@
 // @lc code=start
 class Solution {
     public List<Integer> findAnagrams(String s, String p) {
-        int[] count = new int[128];
-        for (char c : p.toCharArray()) {
-            count[c]++;
+        int[] map = new int[26];
+        for (int i = 0;i < p.length();i++) {
+            map[p.charAt(i)-'a']++;
         }
-        int low = 0, high = 0;
         List<Integer> result = new ArrayList<>();
+        int low = 0, high = 0;
         while (high < s.length()) {
-            if (count[s.charAt(high)] > 0) {
-                count[s.charAt(high++)]--;
+            if (map[s.charAt(high)-'a'] > 0) {
+                map[s.charAt(high++)-'a']--;
                 if (high - low == p.length()) {
                     result.add(low);
                 }
             } else {
-                count[s.charAt(low++)]++;
+                //出现没有过的字母，增加计数，下次high也会消费掉
+                 map[s.charAt(low++)-'a']++;
             }
         }
         return result;
