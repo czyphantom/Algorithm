@@ -37,7 +37,9 @@ class Solution {
         }
         int[] l = dfs(node.left);
         int[] r = dfs(node.right);
+        //选择当前节点的最大值
         int selected = node.val + l[1] + r[1];
+        //不选择当前节点的最大值
         int notSelected = Math.max(l[0], l[1]) + Math.max(r[0], r[1]);
         return new int[]{selected, notSelected};
     }
