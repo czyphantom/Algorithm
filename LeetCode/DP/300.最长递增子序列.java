@@ -10,22 +10,18 @@
 // @lc code=start
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            return 0;
-        }
+        int max = 1;
         int[] dp = new int[nums.length];
-        dp[0] = 1;
-        int res = 1;
-        for (int i = 1; i < nums.length; i++) {
-            dp[i] = 1;
-            for (int j = 0; j < i; j++) {
-                if (nums[i] > nums[j]) {
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
+        Arrays.fill(dp, 1);
+        for (int i = 1;i < nums.length;i++) {
+            for (int j = 0;j < i;j++) {
+                if (nums[j] < nums[i]) {
+                    dp[i] = Math.max(dp[i], dp[j]+1);
+                    max = Math.max(dp[i], max);
                 }
             }
-            res = Math.max(res, dp[i]);
         }
-        return res;
+        return max;
     }
 
     public int lengthOfLIS(int[] nums) {
@@ -40,7 +36,8 @@ class Solution {
             if (nums[i] > d[len]) {
                 d[++len] = nums[i];
             } else {
-                int l = 1, r = len, pos = 0; // 如果找不到说明所有的数都比 nums[i] 大，此时要更新 d[1]，所以这里将 pos 设为 0
+                //如果找不到说明所有的数都比 nums[i] 大，此时要更新 d[1]，所以这里将 pos 设为 0
+                int l = 1, r = len, pos = 0; 
                 while (l <= r) {
                     int mid = (l + r) >> 1;
                     if (d[mid] < nums[i]) {
