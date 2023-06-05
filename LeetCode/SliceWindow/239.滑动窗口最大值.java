@@ -36,6 +36,7 @@ class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
         //存储单调减但是下标递增的数组元素下标
+        //该队列的队首元素即为每个滑动窗口的最大值
         Deque<Integer> deque = new LinkedList<Integer>();
         for (int i = 0; i < k; ++i) {
             while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {

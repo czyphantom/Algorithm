@@ -19,8 +19,14 @@
  */
 class Solution {
     public void deleteNode(ListNode node) {
-        node.val = node.next.val;
-        node.next = node.next.next;
+        ListNode p = node;
+        while (p != null && p.next != null) {
+            p.val = p.next.val;
+            if (p.next.next == null) {
+                p.next = null;
+            }
+            p = p.next;
+        }
     }
 }
 // @lc code=end
