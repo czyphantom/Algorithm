@@ -29,23 +29,23 @@
 class Solution {
     int result = 0;
     public int sumNumbers(TreeNode root) {
-        solve(root, 0);
+        dfs(root, 0);
         return result;
     }
 
-    private void solve(TreeNode current, int cur) {
-        if (current == null) {
+    private void dfs(TreeNode node, int cur) {
+        if (node == null) {
             return;
         }
-        if (current.left == null && current.right == null) {
-            result += cur*10 + current.val;
+        if (node.left == null && node.right == null) {
+            result += cur * 10 + node.val;
             return;
         }
-        if (current.left != null) {
-            solve(current.left, cur*10 + current.val);
+        if (node.left != null) {
+            dfs(node.left, cur*10+node.val);
         }
-        if (current.right != null) {
-            solve(current.right, cur*10 + current.val);
+        if (node.right != null) {
+            dfs(node.right, cur*10+node.val);
         }
     }
 }
