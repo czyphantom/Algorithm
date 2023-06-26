@@ -19,18 +19,21 @@ class Solution {
             return 0;
         }
 
+        //leftMax记录i左边最高的
         int[] leftMax = new int[n];
         leftMax[0] = height[0];
         for (int i = 1; i < n; ++i) {
             leftMax[i] = Math.max(leftMax[i - 1], height[i]);
         }
 
+        //rightMax记录右边最高的
         int[] rightMax = new int[n];
         rightMax[n - 1] = height[n - 1];
         for (int i = n - 2; i >= 0; --i) {
             rightMax[i] = Math.max(rightMax[i + 1], height[i]);
         }
 
+        //对于位置i，能填充的水量是左边最高和右边最高中的最小值和当前位置的差值
         int ans = 0;
         for (int i = 0; i < n; ++i) {
             ans += Math.min(leftMax[i], rightMax[i]) - height[i];

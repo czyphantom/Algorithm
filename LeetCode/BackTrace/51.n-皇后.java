@@ -5,7 +5,7 @@
  * 题目:n 皇后问题 研究的是如何将n个皇后放置在n×n的棋盘上，并且使皇后彼此之间不能相互攻击。给你一个整数n，返回所有不同的n皇后问题的解决方案。
  * 每一种解法包含一个不同的n皇后问题 的棋子放置方案，该方案中 'Q' 和 '.' 分别代表了皇后和空位。
  * 难度：Hard
- * 思路 校验每次放置位置是否能组成n皇后
+ * 思路 回溯
  */
 
 // @lc code=start
@@ -18,11 +18,11 @@ class Solution {
             }
         }
         List<List<String>> res = new ArrayList<List<String>>();
-        dfs(board, 0, res);
+        backTrace(board, 0, res);
         return res;
     }
     
-    private void dfs(char[][] board, int colIndex, List<List<String>> res) {
+    private void backTrace(char[][] board, int colIndex, List<List<String>> res) {
         if (colIndex == board.length) {
             res.add(construct(board));
             return;
@@ -31,7 +31,7 @@ class Solution {
         for (int i = 0; i < board.length; i++) {
             if (validate(board, i, colIndex)) {
                 board[i][colIndex] = 'Q';
-                dfs(board, colIndex + 1, res);
+                backTrace(board, colIndex + 1, res);
                 board[i][colIndex] = '.';
             }
         }
