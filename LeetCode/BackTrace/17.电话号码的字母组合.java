@@ -10,6 +10,7 @@
 // @lc code=start
 class Solution {
     private Map<Character,String> map = new HashMap<>();
+    
     {
         map.put('2', "abc");
         map.put('3', "def");
@@ -20,6 +21,7 @@ class Solution {
         map.put('8', "tuv");
         map.put('9', "wxyz");
     }
+
     public List<String> letterCombinations(String digits) {
         List<String> result = new ArrayList<>();
         if (digits == null || digits.length() == 0) {
