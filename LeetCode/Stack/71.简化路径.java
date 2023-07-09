@@ -9,7 +9,7 @@
  * 两个目录名之间必须只有一个斜杠 '/' 。
  * 最后一个目录名（如果存在）不能 以 '/' 结尾。
  * 此外，路径仅包含从根目录到目标文件或目录的路径上的目录（即，不含 '.' 或 '..'）。
- * 返回简化后得到的 规范路径 。
+ * 返回简化后得到的规范路径 。
  * 难度：Medium
  * 思路：栈
  */
@@ -24,13 +24,11 @@ class Solution {
 		for (int i = 0;i < length;i++) {
 			if (pathArray[i].equals("") || pathArray[i].equals(".")) {
                 continue;
-            }
-			else if (pathArray[i].equals("..")) {
+            } else if (pathArray[i].equals("..")) {
 				if (!stack.isEmpty()) {
 				    stack.pop();
 				}
-			}
-			else {
+			} else {
 				stack.push(pathArray[i]);
 			}
 		}

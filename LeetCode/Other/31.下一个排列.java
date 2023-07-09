@@ -19,7 +19,7 @@ class Solution {
             i--;
         }
         if (i >= 0) {
-            //从末尾往前找到第一个小于尾数的位置
+            //从末尾往前找到第一个大于尾数的位置
             int j = nums.length - 1;
             while (j >= 0 && nums[j] <= nums[i]) {
                 j--;

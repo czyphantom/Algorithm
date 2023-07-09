@@ -2,7 +2,7 @@
  * @lc app=leetcode.cn id=143 lang=java
  *
  * [143] 重排链表
- * 题目：给定一个单链表 L 的头节点 head ，单链表 L 表示为：
+ * 题目：给定一个单链表L的头节点head ，单链表L表示为：
  * L0 → L1 → … → Ln - 1 → Ln
  * 请将其重新排列后变为：
  * L0 → Ln → L1 → Ln - 1 → L2 → Ln - 2 → …
