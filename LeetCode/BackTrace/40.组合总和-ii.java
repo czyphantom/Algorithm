@@ -2,8 +2,8 @@
  * @lc app=leetcode.cn id=40 lang=java
  *
  * [40] 组合总和 II
- * 题目：给定一个数组 candidates 和一个目标数target，找出candidates中所有可以使数字和为 target 的组合。
- * candidates 中的每个数字在每个组合中只能使用一次。
+ * 题目：给定一个数组candidates和一个目标数target，找出candidates中所有可以使数字和为target的组合。
+ * candidates中的每个数字在每个组合中只能使用一次。
  * 注意：解集不能包含重复的组合。 
  * 难度：Medium
  * 思路：回溯

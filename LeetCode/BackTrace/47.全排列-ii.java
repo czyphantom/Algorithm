@@ -2,7 +2,7 @@
  * @lc app=leetcode.cn id=47 lang=java
  *
  * [47] 全排列 II
- * 题目：给定一个可包含重复数字的序列nums ，按任意顺序返回所有不重复的全排列。
+ * 题目：给定一个可包含重复数字的序列nums，按任意顺序返回所有不重复的全排列。
  * 难度：Medium
  * 思路：回溯，就是要注意重复数字的问题
  */
@@ -16,11 +16,11 @@ class Solution {
         List<Integer> perm = new ArrayList<Integer>();
         vis = new boolean[nums.length];
         Arrays.sort(nums);
-        backtrack(nums, ans, 0, perm);
+        backtrace(nums, ans, 0, perm);
         return ans;
     }
 
-    public void backtrack(int[] nums, List<List<Integer>> ans, int idx, List<Integer> perm) {
+    public void backtrace(int[] nums, List<List<Integer>> ans, int idx, List<Integer> perm) {
         if (idx == nums.length) {
             ans.add(new ArrayList<Integer>(perm));
             return;
@@ -31,7 +31,7 @@ class Solution {
             }
             perm.add(nums[i]);
             vis[i] = true;
-            backtrack(nums, ans, idx + 1, perm);
+            backtrace(nums, ans, idx + 1, perm);
             vis[i] = false;
             perm.remove(idx);
         }

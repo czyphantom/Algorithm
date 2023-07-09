@@ -21,14 +21,13 @@ class Solution {
         int res = -1;
         while(begin <= end) {
             int mid = (begin+end)/2;
-            if(target < nums[mid])
+            if(target < nums[mid]) {
                 end = mid - 1;
-            if(target > nums[mid])
+            } else if(target > nums[mid]) {
                 begin = mid + 1;
-            if(nums[mid] == target) {
+            } else {
                 if((mid-1 >= begin && nums[mid-1] != target) || mid == begin) {
-                    res = mid;
-                    break;
+                    return res;
                 } else {
                     end = mid - 1;
                 }     
@@ -41,14 +40,14 @@ class Solution {
         int res = -1;
         while(begin <= end) {
             int mid = (begin+end)/2;
-            if(target < nums[mid])
+            if(target < nums[mid]) {
                 end = mid - 1;
-            if(target > nums[mid])
+            }
+            if(target > nums[mid]) {
                 begin = mid + 1;
-            if(nums[mid] == target) {
+            } else {
                 if((mid+1 <= end && nums[mid+1] != target) || mid == end) {
-                    res = mid;
-                    break;
+                    return res;
                 } else {
                     begin = mid+1;
                 }

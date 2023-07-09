@@ -3,7 +3,7 @@
  *
  * [29] 两数相除
  * 题目：给定两个整数，被除数dividend和除数divisor。将两数相除，要求不使用乘法、除法和mod运算符。
- * 返回被除数 dividend 除以除数 divisor 得到的商。
+ * 返回被除数dividend除以除数divisor得到的商。
  * 难度：Medium
  * 思路：递归+二分
  */
